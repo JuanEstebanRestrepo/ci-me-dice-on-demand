@@ -11,22 +11,22 @@ rvm:
 
  jobs:
   include:
-    - stage: unit tests
-      script: "Running unit tests (1)"
-    - stage: unit tests
-      script: "Running unit tests (2)"
-    - stage: deploy to staging
+    #stage: unit tests
+    #  script: "Running unit tests (1)"
+    #stage: unit tests
+    #  script: "Running unit tests (2)"
+    stage: deploy to staging
       script: skip
       deploy: &heroku
         provider: heroku
         app: ci-me-dice-on-demand-staging1
-        api_key: $HEROKU_AUTH_TOKEN
-    - stage: test staging
+        api_key: HEROKU_AUTH_TOKEN
+    stage: test staging
       script: 'curl https://ci-me-dice-on-demand-staging1.herokuapp.com/'
-    - stage: deploy to production
+    stage: deploy to production
       script: skip
       deploy:
         <<: *heroku
         app: ci-me-dice-on-demand-product1
-    - stage: test production
+    stage: test production
       script: 'curl https://ci-me-dice-on-demand-product1.herokuapp.com/'
