@@ -11,7 +11,7 @@ def dice_page():
 #Testing to check if it works
 @app.route('/test')
 def test():
-    return "Works! :D"
+    return "Works!"
 
 if __name__ == '__main__':
     app.run()
