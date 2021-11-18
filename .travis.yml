@@ -19,14 +19,14 @@ rvm:
       script: skip
       deploy: &heroku
         provider: heroku
-        app: sf-stages-staging
+        app: ci-me-dice-on-demand-staging1
         api_key: $HEROKU_AUTH_TOKEN
     - stage: test staging
-      script: 'curl http://sf-stages-staging.herokuapp.com'
+      script: 'curl https://ci-me-dice-on-demand-staging1.herokuapp.com/'
     - stage: deploy to production
       script: skip
       deploy:
         <<: *heroku
-        app: sf-stages-production
+        app: ci-me-dice-on-demand-product1
     - stage: test production
-      script: 'curl http://sf-stages-production.herokuapp.com'
+      script: 'curl https://ci-me-dice-on-demand-product1.herokuapp.com/'
